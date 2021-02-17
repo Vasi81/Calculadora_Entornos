@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 !SESSION 2021-02-17 23:33:35.683 -----------------------------------------------
 eclipse.buildId=4.18.0.I20201202-1800
 java.version=11.0.8
@@ -128,6 +129,54 @@ java.lang.NumberFormatException: null
 	at java.base/java.lang.Integer.parseInt(Integer.java:770)
 	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1586)
 	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+=======
+
+!ENTRY org.eclipse.core.resources 4 566 2021-02-17 23:43:19.854
+!MESSAGE Could not save master table to file 'C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (El sistema no puede encontrar la ruta especificada)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1265)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 566 2021-02-17 23:43:54.784
+!MESSAGE Could not save master table to file 'C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (El sistema no puede encontrar la ruta especificada)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1265)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 566 2021-02-17 23:46:12.243
+!MESSAGE Could not save master table to file 'C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (El sistema no puede encontrar la ruta especificada)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1265)
+>>>>>>> master
 	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
 	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
 	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)

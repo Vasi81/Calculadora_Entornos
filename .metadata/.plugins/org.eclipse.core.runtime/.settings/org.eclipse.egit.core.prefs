@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=C\:\\Users\\vasbe\\OneDrive\\Escritorio\\GitCalculadora\\.git;
 GitRepositoriesView.GitDirectories.relative=.git;
+=======
+GitRepositoriesView.GitDirectories=C\:\\Users\\vasbe\\OneDrive\\Escritorio\\GitCalculadora\\.git;C\:\\Users\\vasbe\\git\\GitCalculadora\\.git;C\:\\Users\\vasbe\\git\\GitCalculadora\\GitCalculadora\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\Users\\vasbe\\git\\GitCalculadora\\.git;C\:\\Users\\vasbe\\git\\GitCalculadora\\GitCalculadora\\.git;
+>>>>>>> master
 RepositorySearchDialogSearchPath=C\:\\Users\\vasbe\\OneDrive\\Escritorio\\GitCalculadora
 eclipse.preferences.version=1
