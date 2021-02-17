@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
+ * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
+=======
  * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -30,6 +34,39 @@ var catTypes = "Types";
 var catMembers = "Members";
 var catSearchTags = "SearchTags";
 var highlight = "<span class=\"resultHighlight\">$&</span>";
+<<<<<<< HEAD
+var camelCaseRegexp = "";
+var secondaryMatcher = "";
+function getHighlightedText(item) {
+    var ccMatcher = new RegExp(camelCaseRegexp);
+    var label = item.replace(ccMatcher, highlight);
+    if (label === item) {
+        label = item.replace(secondaryMatcher, highlight);
+    }
+    return label;
+}
+function getURLPrefix(ui) {
+    var urlPrefix="";
+    if (useModuleDirectories) {
+        var slash = "/";
+        if (ui.item.category === catModules) {
+            return ui.item.l + slash;
+        } else if (ui.item.category === catPackages && ui.item.m) {
+            return ui.item.m + slash;
+        } else if ((ui.item.category === catTypes && ui.item.p) || ui.item.category === catMembers) {
+            $.each(packageSearchIndex, function(index, item) {
+                if (ui.item.p == item.l) {
+                    urlPrefix = item.m + slash;
+                }
+            });
+            return urlPrefix;
+        } else {
+            return urlPrefix;
+        }
+    }
+    return urlPrefix;
+}
+=======
 var searchPattern = "";
 var RANKING_THRESHOLD = 2;
 var NO_MATCH = 0xffff;
@@ -87,6 +124,7 @@ function createMatcher(pattern, flags) {
     var isCamelCase = /[A-Z]/.test(pattern);
     return new RegExp(pattern, flags + (isCamelCase ? "" : "i"));
 }
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
 var watermark = 'Search';
 $(function() {
     $("#search").val('');
@@ -98,7 +136,11 @@ $(function() {
             $(this).val(watermark).addClass('watermark');
         }
     });
+<<<<<<< HEAD
+    $("#search").on('click keydown', function() {
+=======
     $("#search").on('click keydown paste', function() {
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         if ($(this).val() == watermark) {
             $(this).val('').removeClass('watermark');
         }
@@ -116,8 +158,13 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
         this.widget().menu("option", "items", "> :not(.ui-autocomplete-category)");
     },
     _renderMenu: function(ul, items) {
+<<<<<<< HEAD
+        var rMenu = this,
+                currentCategory = "";
+=======
         var rMenu = this;
         var currentCategory = "";
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         rMenu.menu.bindings = $();
         $.each(items, function(index, item) {
             var li;
@@ -137,6 +184,22 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
     },
     _renderItem: function(ul, item) {
         var label = "";
+<<<<<<< HEAD
+        if (item.category === catModules) {
+            label = getHighlightedText(item.l);
+        } else if (item.category === catPackages) {
+            label = (item.m)
+                    ? getHighlightedText(item.m + "/" + item.l)
+                    : getHighlightedText(item.l);
+        } else if (item.category === catTypes) {
+            label = (item.p)
+                    ? getHighlightedText(item.p + "." + item.l)
+                    : getHighlightedText(item.l);
+        } else if (item.category === catMembers) {
+            label = getHighlightedText(item.p + "." + (item.c + "." + item.l));
+        } else if (item.category === catSearchTags) {
+            label = getHighlightedText(item.l);
+=======
         var matcher = createMatcher(escapeHtml(searchPattern), "g");
         if (item.category === catModules) {
             label = getHighlightedText(item.l, matcher);
@@ -152,6 +215,7 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
             label = getHighlightedText(item.p + "." + (item.c + "." + item.l), matcher);
         } else if (item.category === catSearchTags) {
             label = getHighlightedText(item.l, matcher);
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         } else {
             label = item.l;
         }
@@ -170,6 +234,32 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
         return li;
     }
 });
+<<<<<<< HEAD
+$(function() {
+    $("#search").catcomplete({
+        minLength: 1,
+        delay: 100,
+        source: function(request, response) {
+            var result = new Array();
+            var presult = new Array();
+            var tresult = new Array();
+            var mresult = new Array();
+            var tgresult = new Array();
+            var secondaryresult = new Array();
+            var displayCount = 0;
+            var exactMatcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term) + "$", "i");
+            camelCaseRegexp = ($.ui.autocomplete.escapeRegex(request.term)).split(/(?=[A-Z])/).join("([a-z0-9_$]*?)");
+            var camelCaseMatcher = new RegExp("^" + camelCaseRegexp);
+            secondaryMatcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+
+            // Return the nested innermost name from the specified object
+            function nestedName(e) {
+                return e.l.substring(e.l.lastIndexOf(".") + 1);
+            }
+
+            function concatResults(a1, a2) {
+                a1 = a1.concat(a2);
+=======
 function rankMatch(match, category) {
     if (!match) {
         return NO_MATCH;
@@ -232,11 +322,107 @@ $(function() {
                     return e1.ranking - e2.ranking;
                 });
                 a1 = a1.concat(a2.map(function(e) { return e.item; }));
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
                 a2.length = 0;
                 return a1;
             }
 
             if (moduleSearchIndex) {
+<<<<<<< HEAD
+                var mdleCount = 0;
+                $.each(moduleSearchIndex, function(index, item) {
+                    item.category = catModules;
+                    if (exactMatcher.test(item.l)) {
+                        result.push(item);
+                        mdleCount++;
+                    } else if (camelCaseMatcher.test(item.l)) {
+                        result.push(item);
+                    } else if (secondaryMatcher.test(item.l)) {
+                        secondaryresult.push(item);
+                    }
+                });
+                displayCount = mdleCount;
+                result = concatResults(result, secondaryresult);
+            }
+            if (packageSearchIndex) {
+                var pCount = 0;
+                var pkg = "";
+                $.each(packageSearchIndex, function(index, item) {
+                    item.category = catPackages;
+                    pkg = (item.m)
+                            ? (item.m + "/" + item.l)
+                            : item.l;
+                    if (exactMatcher.test(item.l)) {
+                        presult.push(item);
+                        pCount++;
+                    } else if (camelCaseMatcher.test(pkg)) {
+                        presult.push(item);
+                    } else if (secondaryMatcher.test(pkg)) {
+                        secondaryresult.push(item);
+                    }
+                });
+                result = result.concat(concatResults(presult, secondaryresult));
+                displayCount = (pCount > displayCount) ? pCount : displayCount;
+            }
+            if (typeSearchIndex) {
+                var tCount = 0;
+                $.each(typeSearchIndex, function(index, item) {
+                    item.category = catTypes;
+                    var s = nestedName(item);
+                    if (exactMatcher.test(s)) {
+                        tresult.push(item);
+                        tCount++;
+                    } else if (camelCaseMatcher.test(s)) {
+                        tresult.push(item);
+                    } else if (secondaryMatcher.test(item.p + "." + item.l)) {
+                        secondaryresult.push(item);
+                    }
+                });
+                result = result.concat(concatResults(tresult, secondaryresult));
+                displayCount = (tCount > displayCount) ? tCount : displayCount;
+            }
+            if (memberSearchIndex) {
+                var mCount = 0;
+                $.each(memberSearchIndex, function(index, item) {
+                    item.category = catMembers;
+                    var s = nestedName(item);
+                    if (exactMatcher.test(s)) {
+                        mresult.push(item);
+                        mCount++;
+                    } else if (camelCaseMatcher.test(s)) {
+                        mresult.push(item);
+                    } else if (secondaryMatcher.test(item.c + "." + item.l)) {
+                        secondaryresult.push(item);
+                    }
+                });
+                result = result.concat(concatResults(mresult, secondaryresult));
+                displayCount = (mCount > displayCount) ? mCount : displayCount;
+            }
+            if (tagSearchIndex) {
+                var tgCount = 0;
+                $.each(tagSearchIndex, function(index, item) {
+                    item.category = catSearchTags;
+                    if (exactMatcher.test(item.l)) {
+                        tgresult.push(item);
+                        tgCount++;
+                    } else if (secondaryMatcher.test(item.l)) {
+                        secondaryresult.push(item);
+                    }
+                });
+                result = result.concat(concatResults(tgresult, secondaryresult));
+                displayCount = (tgCount > displayCount) ? tgCount : displayCount;
+            }
+            displayCount = (displayCount > 500) ? displayCount : 500;
+            var counter = function() {
+                var count = {Modules: 0, Packages: 0, Types: 0, Members: 0, SearchTags: 0};
+                var f = function(item) {
+                    count[item.category] += 1;
+                    return (count[item.category] <= displayCount);
+                };
+                return f;
+            }();
+            response(result.filter(counter));
+=======
                 $.each(moduleSearchIndex, function(index, item) {
                     item.category = catModules;
                     var ranking = rankMatch(boundaryMatcher.exec(item.l), catModules);
@@ -301,6 +487,7 @@ $(function() {
                 result = concatResults(result, newResults);
             }
             response(result);
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         },
         response: function(event, ui) {
             if (!ui.content.length) {
@@ -317,7 +504,15 @@ $(function() {
             if (ui.item.l !== noResult.l) {
                 var url = getURLPrefix(ui);
                 if (ui.item.category === catModules) {
+<<<<<<< HEAD
+                    if (useModuleDirectories) {
+                        url += "module-summary.html";
+                    } else {
+                        url = ui.item.l + "-summary.html";
+                    }
+=======
                     url += "module-summary.html";
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
                 } else if (ui.item.category === catPackages) {
                     if (ui.item.url) {
                         url = ui.item.url;
