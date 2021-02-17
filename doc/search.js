@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -30,6 +34,7 @@ var catTypes = "Types";
 var catMembers = "Members";
 var catSearchTags = "SearchTags";
 var highlight = "<span class=\"resultHighlight\">$&</span>";
+<<<<<<< HEAD
 var camelCaseRegexp = "";
 var secondaryMatcher = "";
 function getHighlightedText(item) {
@@ -61,6 +66,65 @@ function getURLPrefix(ui) {
     }
     return urlPrefix;
 }
+=======
+var searchPattern = "";
+var RANKING_THRESHOLD = 2;
+var NO_MATCH = 0xffff;
+var MAX_RESULTS_PER_CATEGORY = 500;
+function escapeHtml(str) {
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function getHighlightedText(item, matcher) {
+    var escapedItem = escapeHtml(item);
+    return escapedItem.replace(matcher, highlight);
+}
+function getURLPrefix(ui) {
+    var urlPrefix="";
+    var slash = "/";
+    if (ui.item.category === catModules) {
+        return ui.item.l + slash;
+    } else if (ui.item.category === catPackages && ui.item.m) {
+        return ui.item.m + slash;
+    } else if ((ui.item.category === catTypes && ui.item.p) || ui.item.category === catMembers) {
+        $.each(packageSearchIndex, function(index, item) {
+            if (item.m && ui.item.p == item.l) {
+                urlPrefix = item.m + slash;
+            }
+        });
+        return urlPrefix;
+    } else {
+        return urlPrefix;
+    }
+    return urlPrefix;
+}
+function makeCamelCaseRegex(term) {
+    var pattern = "";
+    var isWordToken = false;
+    term.replace(/,\s*/g, ", ").trim().split(/\s+/).forEach(function(w, index) {
+        if (index > 0) {
+            // whitespace between identifiers is significant
+            pattern += (isWordToken && /^\w/.test(w)) ? "\\s+" : "\\s*";
+        }
+        var tokens = w.split(/(?=[A-Z,.()<>[\/])/);
+        for (var i = 0; i < tokens.length; i++) {
+            var s = tokens[i];
+            if (s === "") {
+                continue;
+            }
+            pattern += $.ui.autocomplete.escapeRegex(s);
+            isWordToken =  /\w$/.test(s);
+            if (isWordToken) {
+                pattern += "([a-z0-9_$<>\\[\\]]*?)";
+            }
+        }
+    });
+    return pattern;
+}
+function createMatcher(pattern, flags) {
+    var isCamelCase = /[A-Z]/.test(pattern);
+    return new RegExp(pattern, flags + (isCamelCase ? "" : "i"));
+}
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
 var watermark = 'Search';
 $(function() {
     $("#search").val('');
@@ -72,7 +136,11 @@ $(function() {
             $(this).val(watermark).addClass('watermark');
         }
     });
+<<<<<<< HEAD
     $("#search").on('click keydown', function() {
+=======
+    $("#search").on('click keydown paste', function() {
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         if ($(this).val() == watermark) {
             $(this).val('').removeClass('watermark');
         }
@@ -90,8 +158,13 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
         this.widget().menu("option", "items", "> :not(.ui-autocomplete-category)");
     },
     _renderMenu: function(ul, items) {
+<<<<<<< HEAD
         var rMenu = this,
                 currentCategory = "";
+=======
+        var rMenu = this;
+        var currentCategory = "";
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         rMenu.menu.bindings = $();
         $.each(items, function(index, item) {
             var li;
@@ -111,6 +184,7 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
     },
     _renderItem: function(ul, item) {
         var label = "";
+<<<<<<< HEAD
         if (item.category === catModules) {
             label = getHighlightedText(item.l);
         } else if (item.category === catPackages) {
@@ -125,6 +199,23 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
             label = getHighlightedText(item.p + "." + (item.c + "." + item.l));
         } else if (item.category === catSearchTags) {
             label = getHighlightedText(item.l);
+=======
+        var matcher = createMatcher(escapeHtml(searchPattern), "g");
+        if (item.category === catModules) {
+            label = getHighlightedText(item.l, matcher);
+        } else if (item.category === catPackages) {
+            label = (item.m)
+                    ? getHighlightedText(item.m + "/" + item.l, matcher)
+                    : getHighlightedText(item.l, matcher);
+        } else if (item.category === catTypes) {
+            label = (item.p)
+                    ? getHighlightedText(item.p + "." + item.l, matcher)
+                    : getHighlightedText(item.l, matcher);
+        } else if (item.category === catMembers) {
+            label = getHighlightedText(item.p + "." + (item.c + "." + item.l), matcher);
+        } else if (item.category === catSearchTags) {
+            label = getHighlightedText(item.l, matcher);
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         } else {
             label = item.l;
         }
@@ -143,6 +234,7 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
         return li;
     }
 });
+<<<<<<< HEAD
 $(function() {
     $("#search").catcomplete({
         minLength: 1,
@@ -167,11 +259,76 @@ $(function() {
 
             function concatResults(a1, a2) {
                 a1 = a1.concat(a2);
+=======
+function rankMatch(match, category) {
+    if (!match) {
+        return NO_MATCH;
+    }
+    var index = match.index;
+    var input = match.input;
+    var leftBoundaryMatch = 2;
+    var periferalMatch = 0;
+    var delta = 0;
+    // make sure match is anchored on a left word boundary
+    if (index === 0 || /\W/.test(input[index - 1]) || "_" === input[index - 1] || "_" === input[index]) {
+        leftBoundaryMatch = 0;
+    } else if (input[index] === input[index].toUpperCase() && !/^[A-Z0-9_$]+$/.test(input)) {
+        leftBoundaryMatch = 1;
+    }
+    var matchEnd = index + match[0].length;
+    var leftParen = input.indexOf("(");
+    // exclude peripheral matches
+    if (category !== catModules && category !== catSearchTags) {
+        var endOfName = leftParen > -1 ? leftParen : input.length;
+        var delim = category === catPackages ? "/" : ".";
+        if (leftParen > -1 && leftParen < index) {
+            periferalMatch += 2;
+        } else if (input.lastIndexOf(delim, endOfName) >= matchEnd) {
+            periferalMatch += 2;
+        }
+    }
+    for (var i = 1; i < match.length; i++) {
+        // lower ranking if parts of the name are missing
+        if (match[i])
+            delta += match[i].length;
+    }
+    if (category === catTypes) {
+        // lower ranking if a type name contains unmatched camel-case parts
+        if (/[A-Z]/.test(input.substring(matchEnd)))
+            delta += 5;
+        if (/[A-Z]/.test(input.substring(0, index)))
+            delta += 5;
+    }
+    return leftBoundaryMatch + periferalMatch + (delta / 200);
+
+}
+$(function() {
+    $("#search").catcomplete({
+        minLength: 1,
+        delay: 300,
+        source: function(request, response) {
+            var result = [];
+            var newResults = [];
+
+            searchPattern = makeCamelCaseRegex(request.term);
+            if (searchPattern === "") {
+                return this.close();
+            }
+            var camelCaseMatcher = createMatcher(searchPattern, "");
+            var boundaryMatcher = createMatcher("\\b" + searchPattern, "");
+
+            function concatResults(a1, a2) {
+                a2.sort(function(e1, e2) {
+                    return e1.ranking - e2.ranking;
+                });
+                a1 = a1.concat(a2.map(function(e) { return e.item; }));
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
                 a2.length = 0;
                 return a1;
             }
 
             if (moduleSearchIndex) {
+<<<<<<< HEAD
                 var mdleCount = 0;
                 $.each(moduleSearchIndex, function(index, item) {
                     item.category = catModules;
@@ -265,6 +422,72 @@ $(function() {
                 return f;
             }();
             response(result.filter(counter));
+=======
+                $.each(moduleSearchIndex, function(index, item) {
+                    item.category = catModules;
+                    var ranking = rankMatch(boundaryMatcher.exec(item.l), catModules);
+                    if (ranking < RANKING_THRESHOLD) {
+                        newResults.push({ ranking: ranking, item: item });
+                    }
+                    return newResults.length < MAX_RESULTS_PER_CATEGORY;
+                });
+                result = concatResults(result, newResults);
+            }
+            if (packageSearchIndex) {
+                $.each(packageSearchIndex, function(index, item) {
+                    item.category = catPackages;
+                    var name = (item.m && request.term.indexOf("/") > -1)
+                            ? (item.m + "/" + item.l)
+                            : item.l;
+                    var ranking = rankMatch(boundaryMatcher.exec(name), catPackages);
+                    if (ranking < RANKING_THRESHOLD) {
+                        newResults.push({ ranking: ranking, item: item });
+                    }
+                    return newResults.length < MAX_RESULTS_PER_CATEGORY;
+                });
+                result = concatResults(result, newResults);
+            }
+            if (typeSearchIndex) {
+                $.each(typeSearchIndex, function(index, item) {
+                    item.category = catTypes;
+                    var name = request.term.indexOf(".") > -1
+                        ? item.p + "." + item.l
+                        : item.l;
+                    var ranking = rankMatch(camelCaseMatcher.exec(name), catTypes);
+                    if (ranking < RANKING_THRESHOLD) {
+                        newResults.push({ ranking: ranking, item: item });
+                    }
+                    return newResults.length < MAX_RESULTS_PER_CATEGORY;
+                });
+                result = concatResults(result, newResults);
+            }
+            if (memberSearchIndex) {
+                $.each(memberSearchIndex, function(index, item) {
+                    item.category = catMembers;
+                    var name = request.term.indexOf(".") > -1
+                            ? item.p + "." + item.c + "." + item.l
+                            : item.l;
+                    var ranking = rankMatch(camelCaseMatcher.exec(name), catMembers);
+                    if (ranking < RANKING_THRESHOLD) {
+                        newResults.push({ ranking: ranking, item: item });
+                    }
+                    return newResults.length < MAX_RESULTS_PER_CATEGORY;
+                });
+                result = concatResults(result, newResults);
+            }
+            if (tagSearchIndex) {
+                $.each(tagSearchIndex, function(index, item) {
+                    item.category = catSearchTags;
+                    var ranking = rankMatch(boundaryMatcher.exec(item.l), catSearchTags);
+                    if (ranking < RANKING_THRESHOLD) {
+                        newResults.push({ ranking: ranking, item: item });
+                    }
+                    return newResults.length < MAX_RESULTS_PER_CATEGORY;
+                });
+                result = concatResults(result, newResults);
+            }
+            response(result);
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         },
         response: function(event, ui) {
             if (!ui.content.length) {
@@ -281,11 +504,15 @@ $(function() {
             if (ui.item.l !== noResult.l) {
                 var url = getURLPrefix(ui);
                 if (ui.item.category === catModules) {
+<<<<<<< HEAD
                     if (useModuleDirectories) {
                         url += "module-summary.html";
                     } else {
                         url = ui.item.l + "-summary.html";
                     }
+=======
+                    url += "module-summary.html";
+>>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
                 } else if (ui.item.category === catPackages) {
                     if (ui.item.url) {
                         url = ui.item.url;
