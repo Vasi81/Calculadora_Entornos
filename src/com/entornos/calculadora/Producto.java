@@ -1,5 +1,6 @@
 package com.entornos.calculadora;
 
+
 /**
  * Esta será la clase que utilizaremos para devolver el producto.
  * @author Daniel Pavónm Gómez
@@ -62,9 +63,9 @@ public class Producto {
 		return Math.pow(operador1, operador2);
 	}*/
 	
-	public double metProductoPotencia(int operador1, int operador2) throws ValorNoValido {
+	public double metProductoPotencia(int operador1, int operador2) throws Exception {
 		if (operador2 >= 15) {
-			throw new ValorNoValido("El exponente es muy grande");   
+			throw new Exception("El exponente es muy grande");   
 		}
 		return Math.pow(operador1, operador2);
 	}
