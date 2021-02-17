@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="GitSelectRepositoryPage.lastRepository" value="C:\Users\vasbe\git\GitCalculadora\.git"/>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="file://C:\Users\vasbe\git\GitCalculadora"/>
+		<item value="file://C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora"/>
+		<item value="file://C:\Users\vasbe\OneDrive\Escritorio\GitCalculadora\src"/>
+		<item value="https://github.com/Vasi81/Calculadora_Entornos"/>
+	</list>
+</section>
