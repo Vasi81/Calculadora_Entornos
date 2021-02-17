@@ -14,6 +14,8 @@ public class Main {
 		double operador5 = 0;
 		
 		
+		//Clase Producto()
+		
 		Producto numEntero = new Producto();
 		Producto numReal = new Producto();
 		Producto potencia = new Producto();
@@ -25,6 +27,35 @@ public class Main {
 		System.out.println("El resultado es: " + numReal.metProductoReal3(operador3, operador4, operador5));
 		
 		System.out.println("El resultado es: " + potencia.metProductoPotencia(operador1, operador2));
+		
+		
+
+		//Clase Suma()
+		//Enteros
+		 
+		Suma s1=new Suma();
+		System.out.println(s1.sumar(operador1, operador2));
+		
+		System.out.println();
+		System.out.println(Suma.acumuladorsuma);
+		
+		
+		//Reales 2
+		 
+		Suma s2=new Suma();
+		System.out.println(s2.sumar(operador3, operador4));
+				
+		System.out.println(s2.sumar(5.4));
+		System.out.println(Suma.acumuladorsumareal);
+				
+		
+		//Reales 3
+		 
+		Suma s3=new Suma();
+		System.out.println(s3.sumar(operador3, operador4,operador5));
+		
+		System.out.println(s3.sumar(5.4));
+		System.out.println(Suma.acumuladorsumareal);
 		
 		
 
