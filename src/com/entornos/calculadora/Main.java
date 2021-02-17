@@ -36,7 +36,7 @@ public class Main {
 
 
 
-        c1.cociente(8,2);
+        /*c1.cociente(8,2);
         System.out.println("El resultado es: " + c1.resultado1);
 
 
@@ -48,7 +48,7 @@ public class Main {
 
 
         c1.raizCuadrada(8);
-        System.out.println("El resultado es: " + c1.resultado1);
+        System.out.println("El resultado es: " + c1.resultado1);*/
 		
         
 	}
