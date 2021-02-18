@@ -28,7 +28,17 @@ public class Main {
 		
 		System.out.println("El resultado es: " + potencia.metProductoPotencia(operador1, operador2));
 		
-		
+		// Clase Cociente
+
+		Cociente c1 = new Cociente();
+
+		System.out.println(c1.cociente(operador1, operador2));
+
+		System.out.println(c1.inverso(operador2));
+
+		System.out.println(c1.raizCuadrada(operador1));
+
+
 
 		//Clase Suma()
 		//Enteros

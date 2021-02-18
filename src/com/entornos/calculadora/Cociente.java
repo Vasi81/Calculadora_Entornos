@@ -52,12 +52,53 @@ public class Cociente {
 	 * Metodo constructor sin parámetros. Crea el constructor para dividir 2 números
 	 * enteros o 2 números reales. No devuelve ningun valor.
 	 */
-	public Cociente() {
+		public Cociente() {
 		this.operador1 = 0;
 		this.operador2 = 0;
 		this.operador3 = 0;
 		this.operador4 = 0;
 	}
+	
+
+	public int getOperador1() {
+		return operador1;
+	}
+
+
+	public void setOperador1(int operador1) {
+		this.operador1 = operador1;
+	}
+
+
+	public int getOperador2() {
+		return operador2;
+	}
+
+
+	public void setOperador2(int operador2) {
+		this.operador2 = operador2;
+	}
+
+
+	public double getOperador3() {
+		return operador3;
+	}
+
+
+	public void setOperador3(double operador3) {
+		this.operador3 = operador3;
+	}
+
+
+	public double getOperador4() {
+		return operador4;
+	}
+
+
+	public void setOperador4(double operador4) {
+		this.operador4 = operador4;
+	}
+
 
 	/**
 	 * Este metodo realiza la división de dos números enteros, tiene 2 parámetros de
@@ -131,12 +172,12 @@ public class Cociente {
 	 * @return devuelve la raiz cuadrada del número indicado.
 	 * @exception Exception El operador1 debe ser mayor que cero
 	 */
-	public int raizCuadrada(int operador1) throws Exception {
+	public double raizCuadrada(int operador1) throws Exception {
 		if (operador1 <= 0)
 			throw new Exception("El operador1 debe ser mayor que cero");
 		else
-			this.resultado1 = (int) Math.sqrt(operador1);
-		return this.resultado1;
+			this.resultado2 = Math.sqrt(operador1);
+		return this.resultado2;
 	}
 
 }
