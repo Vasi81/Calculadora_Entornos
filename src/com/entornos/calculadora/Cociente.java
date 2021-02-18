@@ -60,45 +60,7 @@ public class Cociente {
 	}
 	
 
-	public int getOperador1() {
-		return operador1;
-	}
-
-
-	public void setOperador1(int operador1) {
-		this.operador1 = operador1;
-	}
-
-
-	public int getOperador2() {
-		return operador2;
-	}
-
-
-	public void setOperador2(int operador2) {
-		this.operador2 = operador2;
-	}
-
-
-	public double getOperador3() {
-		return operador3;
-	}
-
-
-	public void setOperador3(double operador3) {
-		this.operador3 = operador3;
-	}
-
-
-	public double getOperador4() {
-		return operador4;
-	}
-
-
-	public void setOperador4(double operador4) {
-		this.operador4 = operador4;
-	}
-
+	
 
 	/**
 	 * Este metodo realiza la divisi�n de dos n�meros enteros, tiene 2 par�metros de
