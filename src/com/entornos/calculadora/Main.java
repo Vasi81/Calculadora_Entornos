@@ -31,11 +31,14 @@ public class Main {
 		// Clase Cociente
 
 		Cociente c1 = new Cociente();
-
+		
+		// División de dos números enteros
 		System.out.println(c1.cociente(operador1, operador2));
-
+		
+		// Inverso de un número
 		System.out.println(c1.inverso(operador2));
-
+		
+		//raiz cuadrada de un número
 		System.out.println(c1.raizCuadrada(operador1));
 
 
