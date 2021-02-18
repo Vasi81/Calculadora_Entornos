@@ -27,7 +27,7 @@ public class Resta {
 	}
 	/**
 	 * 
-	 * @param hacemos referencia a memoria
+	 
 	 */
 	public Resta(double memoria) {
 		this.memoria = memoria;
@@ -62,7 +62,7 @@ public class Resta {
 	}
 	/**
 	 * acumular y poder restar a la vez
-	 * @param para poder ir restando
+	 
 	 */
 	public void restaAcumulada(double parametro) {
 		 memoria -= parametro; 
