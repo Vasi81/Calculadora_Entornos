@@ -2,8 +2,8 @@ package com.entornos.calculadora;
 
 /**
  * Clase para sumar entre uno y tres operandos.
- * Los operadores pueden ser números enteros o números reales
- * @author José Ignacio Gutiérrez
+ * Los operadores pueden ser nï¿½meros enteros o nï¿½meros reales
+ * @author Josï¿½ Ignacio Gutiï¿½rrez
  * @version 1.0
  * @since 14-02-2021.
  */
@@ -29,14 +29,14 @@ public class Suma {
 	private double operador5;
 
 	/**
-	* Variable para almacenar el resultado de las sumas de números enteros.
+	* Variable para almacenar el resultado de las sumas de nï¿½meros enteros.
 	* @see Suma
 	*/
 	//Para los acumuladores definimos dos variables , uno de tipo entero y otro de tipo real.
 	public static int acumuladorsuma=0;
 	
 	/**
-	* Variable para almacenar el resultado de las sumas de números reales.
+	* Variable para almacenar el resultado de las sumas de nï¿½meros reales.
 	* @see Suma
 	*/
 	public static double acumuladorsumareal=0;
@@ -46,9 +46,9 @@ public class Suma {
 	
 			/**
 			 * Constructor Suma.
-			 * Crea el constructor para sumar dos números enteros , 
-			 * sumar dos números reales ,
-			 * sumar tres númeross reales.
+			 * Crea el constructor para sumar dos nï¿½meros enteros , 
+			 * sumar dos nï¿½meros reales ,
+			 * sumar tres nï¿½meross reales.
 			 * @see Suma
 			 */
 	
@@ -62,10 +62,10 @@ public class Suma {
 			}
 			
 				
-			// Métodos
+			// Mï¿½todos
 			/**
-			 * Método sumar con dos operadores enteros.
-			 * Almacenamos el valor calculado por el método sumar para luego incrementar por el "método sumar por un parámetro como entrada".
+			 * Mï¿½todo sumar con dos operadores enteros.
+			 * Almacenamos el valor calculado por el mï¿½todo sumar para luego incrementar por el "mï¿½todo sumar por un parï¿½metro como entrada".
 			 * 
 			 * operador1 + operador2
 			 * @param operador1
@@ -75,7 +75,7 @@ public class Suma {
 			 * @return devuelve la suma de dos operadores enteros.
 			 * 
 			 * @exception   Exception
-			 *		Los parámetros de entrada deben ser mayor de 0.
+			 *		Los parï¿½metros de entrada deben ser mayor de 0.
 			 * 
 			 * @see Suma
 			 */
@@ -85,7 +85,7 @@ public class Suma {
 				this.operador1=operador1;
 				this.operador2=operador2;
 				
-				//Validamos el valor para disparar la excepción.
+				//Validamos el valor para disparar la excepciï¿½n.
 				if (operador1 <= 0) {
 		              throw new Exception("El operador1 debe ser mayor de 0");                                             
 		          }
@@ -96,16 +96,16 @@ public class Suma {
 				
 				valor=this.operador1+this.operador2;
 				
-				//acumuladorsuma , almacena el valor calculado por el método para luego se pueda incrementar por el método sumar por un parámetro como entrada.
+				//acumuladorsuma , almacena el valor calculado por el mï¿½todo para luego se pueda incrementar por el mï¿½todo sumar por un parï¿½metro como entrada.
 				acumuladorsuma=acumuladorsuma+valor;
-				//Devolvemos el valor para el método.
+				//Devolvemos el valor para el mï¿½todo.
 				return valor;
 
 			}
 			
 			
 			/**
-			 * Método sumar con dos operadores reales.
+			 * Mï¿½todo sumar con dos operadores reales.
 			 * Almacenamos el valor calculado por el mÃ©todo sumar para luego incrementar por el "mÃ©todo sumar por un parÃ¡metro como entrada".
 			 * 
 			 * operador1 + operador2 +operador3
@@ -127,7 +127,7 @@ public class Suma {
 				this.operador4=operador2;
 				
 				
-				//Validamos el valor para disparar la excepción.
+				//Validamos el valor para disparar la excepciï¿½n.
 				if (operador1 <= 0) {
 		              throw new Exception("El operador1 debe ser mayor de 0");                                             
 		          }
@@ -137,7 +137,7 @@ public class Suma {
 				
 				valor=this.operador3+this.operador4 ;
 				
-				//acumuladorsumareal , almacena el valor calculado por el método para luego se pueda incrementar por el método sumar por un parámetro como entrada.
+				//acumuladorsumareal , almacena el valor calculado por el mï¿½todo para luego se pueda incrementar por el mï¿½todo sumar por un parï¿½metro como entrada.
 				acumuladorsumareal=acumuladorsumareal+valor;
 				//Devolvemos el valor para el mÃ©todo.
 				return valor;
@@ -146,8 +146,8 @@ public class Suma {
 			
 			
 			/**
-			 * Método sumar con tres operadores reales.
-			 * Almacenamos el valor calculado por el método sumar para luego incrementar por el "método sumar por un parámetro como entrada".
+			 * Mï¿½todo sumar con tres operadores reales.
+			 * Almacenamos el valor calculado por el mï¿½todo sumar para luego incrementar por el "mï¿½todo sumar por un parï¿½metro como entrada".
 			 * 
 			 * operador1 + operador2 +operador3
 			 * @param operador1
@@ -159,7 +159,7 @@ public class Suma {
 			 * @return devuelve la suma de tres operadores reales.
 			 * 
 			 * @exception   Exception
-			 *		Los parámetros de entrada deben ser mayor de 0.
+			 *		Los parï¿½metros de entrada deben ser mayor de 0.
 			 * 
 			 * @see Suma
 			 */
@@ -170,7 +170,7 @@ public class Suma {
 				this.operador4=operador2;
 				this.operador5=operador3;
 				
-				//Validamos el valor para disparar la excepción.
+				//Validamos el valor para disparar la excepciï¿½n.
 				if (operador1 <= 0) {
 		              throw new Exception("El operador1 debe ser mayor de 0");                                             
 		          }
@@ -182,15 +182,15 @@ public class Suma {
 		          }
 				
 				valor=this.operador3+this.operador4 +this.operador5 ;
-				//acumuladorsumareal , almacena el valor calculado por el método para luego se pueda incrementar por el método sumar por un parámetro como entrada.
+				//acumuladorsumareal , almacena el valor calculado por el mï¿½todo para luego se pueda incrementar por el mï¿½todo sumar por un parï¿½metro como entrada.
 				acumuladorsumareal=acumuladorsumareal+valor;
-				//Devolvemos el valor para el método.
+				//Devolvemos el valor para el mï¿½todo.
 				return valor;
 			}
 
 			
 			/**
-			 * Método sumar con valor acumalado de tipo entero.
+			 * Mï¿½todo sumar con valor acumalado de tipo entero.
 			 * Usamos el valor almacenado mediante el mÃ©todo sumar para incrementar el valor con el parÃ¡metro introducido.
 			 * acumuladorsuma +operador1
 			 * @param operador1
@@ -219,7 +219,7 @@ public class Suma {
 			
 			
 			/**
-			 * Método sumar con valor acumalado de tipo real.
+			 * Mï¿½todo sumar con valor acumalado de tipo real.
 			 * Usamos el valor almacenado mediante el mÃ©todo sumar para incrementar el valor con el parÃ¡metro introducido.
 			 * 
 			 * acumuladorsumareal +operador1

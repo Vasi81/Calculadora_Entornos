@@ -1,9 +1,9 @@
 package com.entornos.calculadora;
 
 /**
- * Esta clase implementa métodos relacionados con la operación matemática de
- * división de una calculadora. También implementa los métodos de calculo de
- * raiz cuadrada y número inverso
+ * Esta clase implementa mï¿½todos relacionados con la operaciï¿½n matemï¿½tica de
+ * divisiï¿½n de una calculadora. Tambiï¿½n implementa los mï¿½todos de calculo de
+ * raiz cuadrada y nï¿½mero inverso
  * 
  * @author Vesselin Stanev
  * @version 1.0
@@ -35,13 +35,13 @@ public class Cociente {
 	private double operador4;
 
 	/**
-	 * Valor númerico de tipo entero. El valor representa la solución de la
-	 * operación.
+	 * Valor nï¿½merico de tipo entero. El valor representa la soluciï¿½n de la
+	 * operaciï¿½n.
 	 */
 	public int resultado1;
 
 	/**
-	 * Valor númerico de tipo real. El valor representa la solución de la operación.
+	 * Valor nï¿½merico de tipo real. El valor representa la soluciï¿½n de la operaciï¿½n.
 	 */
 
 	public double resultado2;
@@ -49,23 +49,26 @@ public class Cociente {
 	// Constructores
 
 	/**
-	 * Metodo constructor sin parámetros. Crea el constructor para dividir 2 números
-	 * enteros o 2 números reales. No devuelve ningun valor.
+	 * Metodo constructor sin parï¿½metros. Crea el constructor para dividir 2 nï¿½meros
+	 * enteros o 2 nï¿½meros reales. No devuelve ningun valor.
 	 */
-	public Cociente() {
+		public Cociente() {
 		this.operador1 = 0;
 		this.operador2 = 0;
 		this.operador3 = 0;
 		this.operador4 = 0;
 	}
+	
+
+	
 
 	/**
-	 * Este metodo realiza la división de dos números enteros, tiene 2 parámetros de
-	 * entrada (dividendo y divisor) y uno de salida que es la solución
+	 * Este metodo realiza la divisiï¿½n de dos nï¿½meros enteros, tiene 2 parï¿½metros de
+	 * entrada (dividendo y divisor) y uno de salida que es la soluciï¿½n
 	 * 
-	 * @param operador1 valor númerico de tipo entero, representa el dividendo
-	 * @param operador2 valor númerico de tipo entero, representa el divisor
-	 * @return Devuelve un valor númerico de tipo entero.
+	 * @param operador1 valor nï¿½merico de tipo entero, representa el dividendo
+	 * @param operador2 valor nï¿½merico de tipo entero, representa el divisor
+	 * @return Devuelve un valor nï¿½merico de tipo entero.
 	 * @exception Exception No se puede dividir entre cero
 	 * @exception Exception Los operadores deben ser mayores que cero
 	 */
@@ -84,12 +87,12 @@ public class Cociente {
 	}
 
 	/**
-	 * Este método realiza la división de dos números reales, tiene 2 parámetros de
+	 * Este mï¿½todo realiza la divisiï¿½n de dos nï¿½meros reales, tiene 2 parï¿½metros de
 	 * entrada (dividendo y divisor).
 	 * 
-	 * @param operador3 valor númerico de tipo real, representa el dividendo
-	 * @param operador4 valor númerico de tipo real, representa el divisor
-	 * @return Devuelve la división de los 2 números reales.
+	 * @param operador3 valor nï¿½merico de tipo real, representa el dividendo
+	 * @param operador4 valor nï¿½merico de tipo real, representa el divisor
+	 * @return Devuelve la divisiï¿½n de los 2 nï¿½meros reales.
 	 * @exception Exception No se puede dividir entre cero
 	 * @exception Exception Los operadores deben ser mayores que cero
 	 * 
@@ -108,11 +111,11 @@ public class Cociente {
 	}
 
 	/**
-	 * El método inverso calcula el inverso multiplicativo de un número
+	 * El mï¿½todo inverso calcula el inverso multiplicativo de un nï¿½mero
 	 * 
-	 * @param operador3 valor númerico de tipo entero, representa el número cuyo
+	 * @param operador3 valor nï¿½merico de tipo entero, representa el nï¿½mero cuyo
 	 *                  inverso queremos calcular
-	 * @return devuelve el inverso del número indicado
+	 * @return devuelve el inverso del nï¿½mero indicado
 	 * @exception Exception El operador3 debe ser mayor que cero
 	 */
 	public double inverso(double operador3) throws Exception {
@@ -127,16 +130,16 @@ public class Cociente {
 	/**
 	 * El metodo raizCuadrada calcula la raiz cuadrada.
 	 * 
-	 * @param operador1 valor númerico de tipo entero
-	 * @return devuelve la raiz cuadrada del número indicado.
+	 * @param operador1 valor nï¿½merico de tipo entero
+	 * @return devuelve la raiz cuadrada del nï¿½mero indicado.
 	 * @exception Exception El operador1 debe ser mayor que cero
 	 */
-	public int raizCuadrada(int operador1) throws Exception {
+	public double raizCuadrada(int operador1) throws Exception {
 		if (operador1 <= 0)
 			throw new Exception("El operador1 debe ser mayor que cero");
 		else
-			this.resultado1 = (int) Math.sqrt(operador1);
-		return this.resultado1;
+			this.resultado2 = Math.sqrt(operador1);
+		return this.resultado2;
 	}
 
 }

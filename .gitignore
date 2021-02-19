@@ -1,8 +1,10 @@
-/bin/
-
-*.project
-
-*.classpath
-
-/.settings/
-
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+>>>>>>> 81a680505a3fd5924b6fe22947fdf925371909fd
