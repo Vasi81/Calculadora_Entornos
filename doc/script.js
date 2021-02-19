@@ -29,19 +29,11 @@ var typeSearchIndex;
 var memberSearchIndex;
 var tagSearchIndex;
 function loadScripts(doc, tag) {
-<<<<<<< HEAD
-    createElem(doc, tag, 'jquery/jszip/dist/jszip.js');
-    createElem(doc, tag, 'jquery/jszip-utils/dist/jszip-utils.js');
-    if (window.navigator.userAgent.indexOf('MSIE ') > 0 || window.navigator.userAgent.indexOf('Trident/') > 0 ||
-            window.navigator.userAgent.indexOf('Edge/') > 0) {
-        createElem(doc, tag, 'jquery/jszip-utils/dist/jszip-utils-ie.js');
-=======
     createElem(doc, tag, 'script-dir/jszip/dist/jszip.js');
     createElem(doc, tag, 'script-dir/jszip-utils/dist/jszip-utils.js');
     if (window.navigator.userAgent.indexOf('MSIE ') > 0 || window.navigator.userAgent.indexOf('Trident/') > 0 ||
             window.navigator.userAgent.indexOf('Edge/') > 0) {
         createElem(doc, tag, 'script-dir/jszip-utils/dist/jszip-utils-ie.js');
->>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
     }
     createElem(doc, tag, 'search.js');
 
@@ -110,12 +102,6 @@ function loadScripts(doc, tag) {
     if (!tagSearchIndex) {
         createElem(doc, tag, 'tag-search-index.js');
     }
-<<<<<<< HEAD
-    $(window).resize(function() {
-        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
-    });
-=======
->>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
 }
 
 function createElem(doc, tag, path) {
@@ -140,18 +126,6 @@ function show(type) {
 }
 
 function updateTabs(type) {
-<<<<<<< HEAD
-    for (var value in tabs) {
-        var sNode = document.getElementById(tabs[value][0]);
-        var spanNode = sNode.firstChild;
-        if (value == type) {
-            sNode.className = activeTableTab;
-            spanNode.innerHTML = tabs[value][1];
-        }
-        else {
-            sNode.className = tableTab;
-            spanNode.innerHTML = "<a href=\"javascript:show("+ value + ");\">" + tabs[value][1] + "</a>";
-=======
     var firstRow = document.getElementById(Object.keys(data)[0]);
     var table = firstRow.closest('table');
     for (var value in tabs) {
@@ -169,16 +143,10 @@ function updateTabs(type) {
             tab.setAttribute('tabindex',-1);
             tab.setAttribute('onclick', "show("+ value + ")");
             tab.innerHTML = tabs[value][1];
->>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
         }
     }
 }
 
-<<<<<<< HEAD
-function updateModuleFrame(pFrame, cFrame) {
-    top.packageFrame.location = pFrame;
-    top.classFrame.location = cFrame;
-=======
 function switchTab(e) {
     if (e.keyCode == 37 || e.keyCode == 38) {
         $("[aria-selected=true]").prev().click().focus();
@@ -188,5 +156,4 @@ function switchTab(e) {
         $("[aria-selected=true]").next().click().focus();
         e.preventDefault();
     }
->>>>>>> be1a4053869ea95b12c4a83d7de97a40b64cdd7e
 }
