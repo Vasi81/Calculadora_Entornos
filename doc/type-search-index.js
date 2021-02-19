@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.entornos.calculadora","l":"Cociente"},{"p":"com.entornos.calculadora","l":"Producto"},{"p":"com.entornos.calculadora","l":"Resta"},{"p":"com.entornos.calculadora","l":"Suma"}]
