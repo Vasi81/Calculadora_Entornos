@@ -130,15 +130,15 @@ public class Cociente {
 	/**
 	 * El metodo raizCuadrada calcula la raiz cuadrada.
 	 * 
-	 * @param operador1 valor n�merico de tipo entero
+	 * @param operador12 valor n�merico de tipo entero
 	 * @return devuelve la raiz cuadrada del n�mero indicado.
 	 * @exception Exception El operador1 debe ser mayor que cero
 	 */
-	public double raizCuadrada(int operador1) throws Exception {
-		if (operador1 <= 0)
+	public double raizCuadrada(double operador12) throws Exception {
+		if (operador12 <= 0)
 			throw new Exception("El operador1 debe ser mayor que cero");
 		else
-			this.resultado2 = Math.sqrt(operador1);
+			this.resultado2 = Math.sqrt(operador12);
 		return this.resultado2;
 	}
 
