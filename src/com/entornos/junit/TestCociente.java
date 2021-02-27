@@ -22,7 +22,7 @@ import com.entornos.calculadora.Cociente;
 public class TestCociente {
 
 	@Test
-	void testCociente() throws Exception {
+	void TestCociente() throws Exception {
 		int operador1 = 12;
 		int operador2 = 2;
 
@@ -36,9 +36,9 @@ public class TestCociente {
 
 	
 	@Test
-	void testCocienteReal() throws Exception {
-		double operador1 = 12;
-		double operador2 = 2;
+	void TestCocienteReal() throws Exception {
+		double operador1 = 12.0;
+		double operador2 = 2.0;
 
 		
 		Cociente c1 = new Cociente();
@@ -50,7 +50,7 @@ public class TestCociente {
 	
 
 	@Test
-	void testCocienteby0() throws Exception  {
+	void TestCocienteby0() throws Exception  {
 		int operador1 = 12;
 		int operador2 = 0;
 
@@ -63,6 +63,7 @@ public class TestCociente {
 		}
 		 catch (Exception expectedException) {
 			 
+			 System.out.println(expectedException.getMessage());
 		 }
 		
 		System.out.println("Esperamos una excepcion al dividir por 0 ,el operador2 no puede ser 0");
@@ -71,7 +72,7 @@ public class TestCociente {
 	
 	
 	@Test
-	void testInversoby0() throws Exception  {
+	void TestInversoby0() throws Exception  {
 		double operador1 = 0;
 		int operador2 = 2;
 
@@ -83,7 +84,7 @@ public class TestCociente {
 			fail("Esperamos una excepcion ,El operador1 debe ser mayor que cero");
 		}
 		 catch (Exception expectedException) {
-			 
+			 System.out.println(expectedException.getMessage());
 		 }
 		
 		System.out.println("Esperamos una excepcion , El operador1 debe ser mayor que cero");
@@ -93,7 +94,7 @@ public class TestCociente {
 	
 	
 	@Test
-	void testInverso() throws Exception {
+	void TestInverso() throws Exception {
 		double operador1 = 0.5;
 		int operador2 = 2;
 		
@@ -105,7 +106,7 @@ public class TestCociente {
 	
 	
 	@Test
-	void testRaizCuadrada() throws Exception {
+	void TestRaizCuadrada() throws Exception {
 		double operador1 = 2;
 		double operador2 = 1.4142135623730951;
 		
