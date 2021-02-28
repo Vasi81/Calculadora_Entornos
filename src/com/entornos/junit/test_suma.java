@@ -70,7 +70,7 @@ class test_suma {
 		
 		Suma s1 = new Suma();
 		
-		System.out.println(s1.acumuladorsumareal);
+		System.out.println(Suma.acumuladorsumareal);
 		
 		assertEquals(11,s1.sumar(num),0);
 		System.out.println("Test cálculo suma con números reales fue correcto");

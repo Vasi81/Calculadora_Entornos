@@ -1,18 +1,7 @@
 package com.entornos.junit;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.junit.jupiter.api.Test;
 
 
@@ -22,7 +11,7 @@ import com.entornos.calculadora.Cociente;
 public class TestCociente {
 
 	@Test
-	void TestCociente() throws Exception {
+	void TestCocienteentero() throws Exception {
 		int operador1 = 12;
 		int operador2 = 2;
 
@@ -74,9 +63,6 @@ public class TestCociente {
 	@Test
 	void TestInversoby0() throws Exception  {
 		double operador1 = 0;
-		int operador2 = 2;
-
-		
 		Cociente c1 = new Cociente();
 		try {
 			
