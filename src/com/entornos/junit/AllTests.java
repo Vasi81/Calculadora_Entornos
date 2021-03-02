@@ -8,7 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	TestCociente.class,
 	TestProducto.class,
-	test_suma.class
+	TestSuma.class,
+	TestResta.class
 	})
 
 public class AllTests {
