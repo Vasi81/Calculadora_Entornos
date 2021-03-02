@@ -2,10 +2,12 @@ package com.entornos.junit;
 
 import static org.junit.Assert.assertEquals;
 
-
 import org.junit.jupiter.api.Test;
+
+
 import com.entornos.calculadora.Suma;
-class test_suma {
+
+class TestSuma {
 	
 
 

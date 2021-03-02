@@ -64,8 +64,9 @@ public class Resta {
 	 * acumular y poder restar a la vez
 	 
 	 */
-	public void restaAcumulada(double parametro) {
+	public  double restaAcumulada(double parametro) {
 		 memoria -= parametro; 
+		 return memoria;
 	}
 	/**
 	 * Mostrar
